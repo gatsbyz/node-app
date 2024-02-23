@@ -1,11 +1,9 @@
 FROM node:16.13.0 AS builder
-LABEL org.opencontainers.image.source="https://github.com/gatsbyz/node-app"
 WORKDIR /dist
 COPY ./package.json ./
 COPY ./package-lock.json ./
 RUN npm ci
 COPY . .
-#COPY .env-sample .env
 RUN npm run build
 
 FROM node:16.13-alpine

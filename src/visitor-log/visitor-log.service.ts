@@ -10,8 +10,8 @@ export class VisitorLogService {
     private readonly visitorLogRepository: Repository<VisitorLog>,
   ) {}
 
-  async createLog(ip: string): Promise<VisitorLog> {
-    const logEntry = this.visitorLogRepository.create({ ip });
+  async createLog(ip: string, message: string): Promise<VisitorLog> {
+    const logEntry = this.visitorLogRepository.create({ ip, message }); // Include message in the creation
     return this.visitorLogRepository.save(logEntry);
   }
 

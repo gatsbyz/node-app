@@ -10,11 +10,11 @@ import { VisitorLogModule } from './visitor-log/visitor-log.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost', // Use your PostgreSQL host
+      host: process.env.POSTGRES_HOST, // Use your PostgreSQL host
       port: 5432,        // Use your PostgreSQL port
-      username: 'postgres', // Use your PostgreSQL username
-      password: 'postgres', // Use your PostgreSQL password
-      database: 'consensys', // Use your PostgreSQL database name
+      username: process.env.POSTGRES_USER, // Use your PostgreSQL username
+      password: process.env.POSTGRES_PASSWORD, // Use your PostgreSQL password
+      database: process.env.POSTGRES_DB, // Use your PostgreSQL database name
       entities: [__dirname + '/**/*.entity{.ts,.js}'], // Path to your entities (models)
       synchronize: true, // Be careful with this in production!
     }),

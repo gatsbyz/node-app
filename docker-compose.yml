@@ -1,0 +1,13 @@
+# The containers that compose the project
+services:
+  localhost:
+    image: postgres:13
+    restart: always
+    container_name: consensys
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: consensys
+
