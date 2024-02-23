@@ -4,7 +4,7 @@ import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { HealthModule } from './modules/health/health.module';
 import { LoggingInterceptor } from './common/logging.interceptor';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { VisitorLogModule } from './visitor-log/visitor-log.module';
+import { VisitorLogModule } from './modules/visitor-log/visitor-log.module';
 
 @Module({
   imports: [

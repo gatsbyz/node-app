@@ -3,41 +3,79 @@ info:
   title: Test API
   description: Test API Service
   version: 1.0.0
-externalDocs:
-  description: NA
-  url: NA
 servers:
   - url: /api/v1
 paths:
-  /healthz:
+  /health:
     get:
-      security:
-        - bearerToken: []
-      summary: health 
-      description: Get health
+      summary: Health Check
+      description: Returns the health status of the API.
       responses:
         '200':
-          description: It indicates that the request has succeeded and returns health information.
+          description: The API is healthy.
           content:
             application/json:
               schema:
                 type: object
-                properties:   
+                properties:
                   message:
                     type: string
+                    example: healthy
+  /visitor-log:
+    get:
+      summary: Retrieve All Visitor Logs
+      description: Fetches all visitor log entries.
+      responses:
+        '200':
+          description: A list of visitor log entries.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VisitorLog'
+    post:
+      summary: Create a New Visitor Log Entry
+      description: Creates a new visitor log entry with the provided IP and message.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ip:
+                  type: string
+                  example: 192.168.1.1
+                message:
+                  type: string
+                  example: "Hello, world!"
+      responses:
+        '201':
+          description: The visitor log entry was successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VisitorLog'
 components:
-  securitySchemes:
-    bearerToken:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
   schemas:
-    Result:
+    VisitorLog:
       type: object
-      description: return result
       properties:
-        resultReturn:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        ip:
           type: string
+          example: 192.168.1.1
+        visitedAt:
+          type: string
+          format: date-time
+          example: '2021-03-01T12:00:00Z'
+        message:
+          type: string
+          example: "Hello, world!"
     Error:
       type: object
       properties:
@@ -45,3 +83,8 @@ components:
           type: string
         timestamp:
           type: string
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
