@@ -1,0 +1,47 @@
+openapi: 3.0.2
+info:
+  title: Test API
+  description: Test API Service
+  version: 1.0.0
+externalDocs:
+  description: NA
+  url: NA
+servers:
+  - url: /api/v1
+paths:
+  /healthz:
+    get:
+      security:
+        - bearerToken: []
+      summary: health 
+      description: Get health
+      responses:
+        '200':
+          description: It indicates that the request has succeeded and returns health information.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:   
+                  message:
+                    type: string
+components:
+  securitySchemes:
+    bearerToken:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Result:
+      type: object
+      description: return result
+      properties:
+        resultReturn:
+          type: string
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        timestamp:
+          type: string
