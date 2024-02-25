@@ -1,10 +1,10 @@
-openapi: 3.0.2
+openapi: 3.1.0
 info:
   title: Test API
   description: Test API Service
   version: 1.0.0
 servers:
-  - url: /api/v1
+  - url: /api
 paths:
   /health:
     get:

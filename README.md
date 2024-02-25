@@ -1,9 +1,5 @@
 Nodejs backend application with Postgres
 
-## API
-
-- /api/v1/\*
-
 ## OpenAPI specification
 
 - [openapi.yaml](./openapi/openapi.yaml)

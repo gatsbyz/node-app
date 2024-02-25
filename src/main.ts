@@ -47,10 +47,10 @@ async function bootstrap() {
   // app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
   app.use(morgan("combined"));
-  app.setGlobalPrefix("api/v1");
 
   // handle 404 not found
   app.useGlobalFilters(new HttpExceptionsFilter());
+  app.setGlobalPrefix("api");
 
   const server2 = await app.listen(process.env.PORT || 3000);
   server2.setTimeout(600000);

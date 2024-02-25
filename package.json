@@ -1,8 +1,8 @@
 {
-  "name": "nodejsprog",
+  "name": "node-app",
   "version": "0.0.1",
-  "description": "nodejsprog",
-  "author": "victoryeo",
+  "description": "My Simple Node.js API",
+  "author": "gatsbyz",
   "license": "",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
