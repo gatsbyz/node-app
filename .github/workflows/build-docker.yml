@@ -62,7 +62,9 @@ jobs:
           docker push $REGISTRY/$PROJECT_ID/$IMAGE_NAME:latest
 
       - name: Build and push
+        env:
+            REGISTRY: ghcr.io
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
+          tags: ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
