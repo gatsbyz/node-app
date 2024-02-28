@@ -59,20 +59,10 @@ jobs:
           IMAGE_NAME: ${{ env.IMAGE_NAME }}
         run: |-
           docker tag $IMAGE_NAME:latest $REGISTRY/$PROJECT_ID/$IMAGE_NAME:latest 
-          docker push $REGISTRY/$PROJECT_ID/$IMAGE_NAME:latest 
-          
-      - name: Extract metadata (tags, labels) for Docker GHCR
-        env:
-          REGISTRY: ghcr.io
-        id: meta
-        uses: docker/metadata-action@v5.5.1
+          docker push $REGISTRY/$PROJECT_ID/$IMAGE_NAME:latest
+
+      - name: Build and push
+        uses: docker/build-push-action@v5
         with:
-          images: ${{ env.REGISTRY }}/${{ github.repository }}
-          
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v5.1.0
-        with:
-          context: .
           push: true
-          tags: latest
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
