@@ -52,7 +52,8 @@ async function bootstrap() {
   app.useGlobalFilters(new HttpExceptionsFilter());
   app.setGlobalPrefix("api");
 
-  const server2 = await app.listen(process.env.PORT || 3000);
+  // const server2 = await app.listen(process.env.PORT || 3000);
+  const server2 = await app.listen(4002);
   server2.setTimeout(600000);
 }
 bootstrap();
