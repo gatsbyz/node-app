@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Req, HttpCode } from '@nestjs/common';
+import { Controller, Get, Post, Delete, Body, Req, HttpCode } from '@nestjs/common';
 import { VisitorLogService } from './visitor-log.service';
 import { VisitorLog } from './entities/visitor-log.entity';
 import { Request } from 'express'; // Import Request from express
@@ -18,5 +18,11 @@ export class VisitorLogController {
   @Get()
   async getAllLogs(): Promise<VisitorLog[]> {
     return this.visitorLogService.getAllLogs();
+  }
+
+  @Delete()
+  @HttpCode(204) // No Content
+  async deleteAllLogs(): Promise<void> {
+    await this.visitorLogService.deleteAllLogs();
   }
 }

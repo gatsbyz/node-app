@@ -57,6 +57,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VisitorLog'
+      delete:
+        summary: Delete All Visitor Log Entries
+        description: Deletes all visitor log entries from the database.
+        responses:
+          '204':
+            description: All visitor log entries were successfully deleted.
 components:
   schemas:
     VisitorLog:

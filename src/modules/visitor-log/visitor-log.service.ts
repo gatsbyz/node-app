@@ -22,4 +22,8 @@ export class VisitorLogService {
       },
     });
   }
+
+  async deleteAllLogs(): Promise<void> {
+    await this.visitorLogRepository.clear(); // This will delete all entries
+  }
 }
