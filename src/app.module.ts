@@ -16,7 +16,7 @@ import { VisitorLogModule } from './modules/visitor-log/visitor-log.module';
       password: process.env.POSTGRES_PASSWORD, // Use your PostgreSQL password
       database: process.env.POSTGRES_DB, // Use your PostgreSQL database name
       entities: [__dirname + '/**/*.entity{.ts,.js}'], // Path to your entities (models)
-      synchronize: true, // Be careful with this in production!
+      // synchronize: true, // Be careful with this in production!
     }),
     ConfigModule.forRoot({
       expandVariables: true,
