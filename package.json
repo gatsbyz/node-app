@@ -6,7 +6,6 @@
   "license": "",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
-    "prestart": "npm run build",
     "start": "node -r ./dist/preload.js dist/main.js",
     "start:dev": "concurrently --handle-input \"wait-on dist/main.js && nodemon\" \"tsc -w -p tsconfig.build.json\" ",
     "typeorm": "ts-node ./node_modules/typeorm/cli",
