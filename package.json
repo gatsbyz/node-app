@@ -9,6 +9,11 @@
     "prestart": "npm run build",
     "start": "node -r ./dist/preload.js dist/main.js",
     "start:dev": "concurrently --handle-input \"wait-on dist/main.js && nodemon\" \"tsc -w -p tsconfig.build.json\" ",
+    "typeorm": "ts-node ./node_modules/typeorm/cli",
+    "migration:run": "npm run typeorm migration:run -- -d ./src/typeorm.ts",
+    "migration:generate": "npm run typeorm -- -d ./src/typeorm.ts migration:generate ./src/migrations/$npm_config_name",
+    "migration:create": "npm run typeorm -- migration:create ./src/migrations/$npm_config_name",
+    "migration:revert": "npm run typeorm -- -d ./src/typeorm.ts migration:revert",
     "lint": "eslint . --ext .js,.ts --ignore-path=.eslintignore --fix",
     "test": "jest",
     "test:e2e": "jest --config ./test/jest-e2e.json"
@@ -40,6 +45,7 @@
     "reflect-metadata": "^0.1.12",
     "request-ip": "^3.3.0",
     "rxjs": "^7.8.0",
+    "ts-node": "^10.9.2",
     "typeorm": "^0.3.20",
     "typescript": "^4.2.4",
     "yarn": "^1.22.19"
