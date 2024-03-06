@@ -17,6 +17,9 @@ const config = {
     // autoLoadEntities: true,
     synchronize: false,
     logging: true,
+    extra: {
+        max: 1 
+    }
 }
 
 export default registerAs('typeorm', () => config)
